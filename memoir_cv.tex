@@ -1,0 +1,373 @@
+% =============================================================================
+% Curriculum Vitae - Adarsh Pyarelal
+% =============================================================================
+\documentclass[final,oneside,10pt]{memoir}
+
+% Silence some noisy warnings temporarily
+\usepackage{silence}
+\WarningFilter{fontaxes}{I don't know how to decode}
+\WarningFilter{latex}{Marginpar}
+\WarningFilter{hyperref}{subfigure}
+\usepackage[tracking]{microtype}
+\usepackage[smaller]{acronym}
+\renewcommand*{\aclabelfont}[1]{\acsfont{\scshape #1}}
+\usepackage{pgfornament}
+
+% =============================================================================
+% If using Minion Pro
+% =============================================================================
+
+\usepackage[onlymath, minionint, swash,lf]{MinionPro}
+\usepackage{fontawesome}
+\usepackage{fontspec}
+\setmainfont[%
+  Ligatures = {Common, TeX},Numbers = {OldStyle, Proportional},Alternate=1,
+  ItalicFeatures={Style=Swash},
+  SmallCapsFeatures={Letters=SmallCaps,LetterSpace=6},
+]{Minion Pro}
+\setsansfont[%
+Numbers = {OldStyle, Proportional},
+BoldFont={ScalaSans Bold},
+]{Scala Sans}
+\setmonofont{Menlo}[Scale=MatchLowercase]
+\usepackage{pifont} % To get Minion Pro ornaments
+
+% =============================================================================
+% If not using Minion Pro, uncomment the lines below, and comment out the lines
+% in the block above.
+% =============================================================================
+% \usepackage[T1]{fontenc}
+% \usepackage{mathpazo}
+% \newcommand{\slantfrac}[2]{\frac{#1}{#2}}
+% =============================================================================
+
+\usepackage[toc]{tabfigures}
+% \PassOptionsToPackage{utf8}{inputenc}
+	% \usepackage{inputenc}
+
+\PassOptionsToPackage{fleqn}{amsmath}   % math environments and more by the AMS 
+    \usepackage{amsmath}
+
+% =============================================================================
+% Bibliography management
+% =============================================================================
+
+\usepackage[%
+    backend=biber, backref, language=auto, style=numeric-comp, sorting=none,
+    maxbibnames=10, arxiv=abs, natbib=true,doi=false,url=false, 
+    isbn=false
+]{biblatex}
+
+\DeclareBibliographyDriver{set}{%
+  \entryset
+    {%
+     ~\setunit*{\addnbspace}}
+    {}%
+  \finentry}
+\DeclareFieldFormat[phdthesis]{title}{\mkbibemph{#1}\isdot}
+\DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}\isdot}
+\DeclareFieldFormat[article]{title}{\mkbibemph{#1}\isdot}
+\DeclareFieldFormat[article]{journaltitle}{#1\isdot}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}\isdot}
+\DeclareFieldFormat[article]{number}{}
+\DeclareFieldFormat[report]{number}{\textsc{\MakeTextLowercase{#1}}}
+\DeclareFieldFormat{eprint:arxiv}{%
+  \ifhyperref
+    {\href{http://arxiv.org/\abx@arxivpath/#1}{%
+       \nolinkurl{[arXiv: #1]}%
+       \iffieldundef{eprintclass}
+         {}
+         {}}}
+    {\nolinkurl{#1}
+     \iffieldundef{eprintclass}
+       {}
+       {}}}
+\renewcommand{\newunitpunct}{, }
+\renewcommand{\entrysetpunct}{\\}
+\AtEveryBibitem{%
+  \clearname{note}%
+  }
+\renewbibmacro{in:}{}
+%\addbibresource{/Users/adarsh/Research/MendeleyBibliography/library.bib}
+\addbibresource{mybiblio.bib}
+
+% Set up back references
+\DefineBibliographyStrings{english}{%
+    backrefpage = {cited on p.},% originally "cited on page"
+    backrefpages = {cited on pages},% originally "cited on pages"
+}
+
+% =============================================================================
+% Colors
+% =============================================================================
+
+\PassOptionsToPackage{dvipsnames}{xcolor}
+    \RequirePackage{xcolor} % [dvipsnames] 
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{Maroon}{cmyk}{0, 0.87, 0.68, 0.32}
+\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
+\definecolor{Black}{cmyk}{0, 0, 0, 0}
+\definecolor{shadecolor}{gray}{0.9}
+
+% =============================================================================
+% Set up hyperlinks
+% =============================================================================
+
+\PassOptionsToPackage{pdftex,hyperfootnotes=false,pdfpagelabels=true}{hyperref}
+    \usepackage{hyperref}  % backref linktocpage pagebackref
+\pdfcompresslevel=9
+\pdfadjustspacing=1 
+
+\hypersetup{%
+    colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    pdftitle={Curriculum Vitae - Adarsh Pyarelal},%
+    pdfauthor={Adarsh Pyarelal},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX}%
+}   
+
+\def\equationautorefname{equation}
+\def\figureautorefname{figure}
+\def\tableautorefname{table}
+
+% =============================================================================
+% Set up maths
+% =============================================================================
+
+% =============================================================================
+% User-defined macros
+% =============================================================================
+
+%%%------------------------------------------------------------------------
+%%% Metadata
+%%%------------------------------------------------------------------------
+
+%% Change as needed. Or just add me as a coauthor. Only some of these are 
+%% used below in the hyperref declaration and address banner section.
+\def\myauthor{Adarsh Pyarelal}
+\def\mytitle{Curriculum Vitae}
+\def\mycopyright{\myauthor}
+\def\mykeywords{}
+\def\mybibliostyle{plain}
+\def\mybibliocommand{}
+\def\mysubtitle{}
+\def\myaffiliation{University of Arizona}
+\def\myaddress{Department of Physics}
+\def\myemail{adarsh@email.arizona.edu}
+\def\myweb{www.physics.arizona.edu/$\sim$adarsh}
+\def\myversion{}
+\def\myrevision{}
+
+
+\def\myaffiliation{University of Arizona}
+\def\myauthor{Adarsh Pyarelal}
+\date{} % not used (revision control instead)
+
+% =============================================================================
+% Memoir package - layout and styling
+% =============================================================================
+
+% Here we set typeblock widths for the main body and the footnotes
+\setlxvchars[\normalfont] % about 66 characters per column
+\setxlvchars[\normalfont\footnotesize] % about 45 characters per column
+
+% Set outer and spine margins (designed for Minion Pro 10pt, change accordingly
+% for different fonts. A wide margin is chosen both for legibility of the
+% typeblock and for tight integration of marginfigures and margin footnotes.
+\setlrmarginsandblock{1.5in}{3.1in}{} % This sets \textwidth to 281.0 pt
+
+% Set upper and lower margins
+\setulmarginsandblock{1.22in}{1.22in}{*}
+
+% Set properties of margin notes, sidecaptioned floats, and footnotes in the
+% margin.
+\setmarginnotes{0.2in}{1.9in}{2\onelineskip}
+\setsidecaps{0.2in}{1.9in}
+\sidecapmargin{outer}
+\renewcommand*{\sidecapstyle}{\normalfont\footnotesize}
+\setsidecappos{c}
+
+% Set footnotes in the margin rather than at the foot of the page
+\footnotesinmargin
+\setsidefeet{\marginparsep}{1.9in}{0.2in}{0pt}{\flushleftright\footnotesize}{*}
+
+% Integrate the counters of the sidefootnotes and footnotes in margin.
+\letcountercounter{sidefootnote}{footnote}
+\setlength{\footmarkwidth}{0em}
+\setlength{\footmarksep}{-\footmarkwidth}
+\setlength{\footparindent}{1em}
+\sideparmargin{outer}
+
+\renewcommand*{\sideparfont}{\color{Maroon}\itshape}
+\renewcommand*{\sideparvshift}{2\baselineskip}
+\marginparmargin{outer}
+
+% Style the entries in the Table of Contents
+\renewcommand*{\contentsname}{Table of Contents}
+\renewcommand*{\cftchapterfont}{\scshape\MakeTextLowercase}
+\renewcommand*{\cftpartfont}{\color{Maroon}\scshape\MakeTextLowercase}
+\captionstyle[\centering]{\sffamily\footnotesize}
+\captionnamefont{\color{Maroon}\footnotesize\sffamily}
+% Reduce spacing between list items
+\tightlists
+
+% Make marginfigures centered by default
+\setfloatadjustment{marginfigure}{\centering}
+
+% Headers and footers - page numbers, section headings, etc.
+\makepagestyle{tufte}
+\createmark{chapter}{left}{nonumber}{}{}
+\createmark{section}{right}{nonumber}{}{}
+\makeoddhead{tufte}{}{}{\scshape\MakeTextLowercase{\leftmark}~~|~~\thepage}
+\makeevenhead{tufte}{\thepage~~|~~\scshape\MakeTextLowercase{\rightmark}}{}{}
+ \makerunningwidth{tufte}[8in]{8in}
+%\aliaspagestyle{chapter}{empty}
+\nouppercaseheads
+\pagestyle{tufte}
+
+%% Bringhurst chapter and head styles with a pedersen-type Chapter number
+\makechapterstyle{bringhurst}{%
+	\renewcommand{\chapterheadstart}{} 
+	\renewcommand{\printchaptername}{} 
+	\renewcommand{\chapternamenum}{} 
+	\setlength{\midchapskip}{15mm}
+	\renewcommand*{\printchapternum}{%
+        \begin{marginfigure}[0pt]
+          \resizebox{!}{\midchapskip}{\color{Maroon}\emph{\thechapter}}
+        \end{marginfigure}
+      }
+	\renewcommand{\afterchapternum}{} 
+	\renewcommand{\printchaptertitle}[1]{%
+	  \raggedright\scshape\MakeLowercase{##1}}
+	\renewcommand{\afterchaptertitle}{%
+	  \vskip\onelineskip \vskip\onelineskip}
+}
+\chapterstyle{bringhurst}
+\headstyles{bringhurst}
+\setsecheadstyle{\bfseries\sffamily}
+% Styling Part headings
+\renewcommand{\parttitlefont}{\color{Maroon}\normalfont\scshape%
+                              \MakeTextLowercase}
+\renewcommand{\partnamefont}{\normalfont}
+\renewcommand{\partnumfont}{\normalfont}
+\setafterparaskip{-0.5em}
+
+% Setting up figures to allow subfloats
+\newsubfloat{figure}
+\checkandfixthelayout
+
+% =============================================================================
+% Misc layout commands
+% =============================================================================
+
+\linespread{1.1}
+
+% =============================================================================
+
+\begin{document}
+%%%------------------------------------------------------------------------
+%%% Address and contact block
+%%%------------------------------------------------------------------------
+\pagestyle{empty}
+\marginpar{
+ \flushright {\footnotesize 
+ \href{http://www.physics.arizona.edu}{Department of Physics} \\
+  University of Arizona \\
+  \vspace{-0.05in} Tucson \textsc{az} 85719.}  
+  \flushright \footnotesize 
+  {\scriptsize  \texttt{\href{mailto:\myemail}{\myemail}} \, \faEnvelope} \\
+  {\scriptsize  \texttt{\href{\myweb}{\myweb}} \, \faGlobe}
+}
+\medskip
+\noindent{\LARGE \itshape Adarsh Pyarelal}
+{\color{gray}}
+\section*{Education}
+\textsf{\textbf{University of Arizona}}, \textsf{Tucson, Arizona} \hfill \textit{2011-2017}\\
+Ph. D. in Physics\\
+Advisor: \textsc{\MakeTextLowercase{Dr. Shufang Su}}\\
+Thesis: \emph{Hidden Higgses and Dark Matter at Current and Future Colliders}
+\noindent\textsf{\textbf{Reed College}}, \textsf{ Portland, Oregon} \hfill \textit{ 2007-2011}\\
+B. A. in Physics\\
+Advisor: \textsc{ Dr. Nelia Mann}\\
+Thesis: \href{http://www.physics.arizona.edu/~adarsh/research/reedthesis/}{\emph{Contribution of the neutral pion Regge trajectory to the exclusive central production of $\eta$(548) mesons in high energy proton/proton collisions.}}
+
+\section*{Honors and Awards}
+  Physics Publications/Presentations Fellowship
+\hfill \textit{2016,17}\\
+  Galileo Circle Scholarship
+\hfill \textit{2016}\\
+  Graduate and Professional Student Council Travel Award
+\hfill \textit{2015}\\
+  Professor C. Y. Fan 'FanFare' Travel Award
+\hfill \textit{2015}\\
+  Outstanding Graduate Student Colloquium Presentation
+\hfill \textit{Fall 2014}\\
+  Graduate College Fellowship in Physics
+\hfill \textit{2015}\\
+  APS 4CS Student Travel Grant
+\hfill \textit{ 2014, 2015}
+\section*{Publications}
+
+  \emph{Light Charged Higgs Bosons to AW/HW via Top Decay}\\
+F. Kling, A. Pyarelal, and S. Su, Journal of High Energy Physics \textbf{11} (2015) 051\\
+  \emph{A Razor Search for Bino Dark Matter at 100 TeV}\\
+A. Pyarelal, and S. Su, in preparation.\\
+  \emph{Exotic Higgs Decays at 14 and 100 TeV}\\
+F. Kling, H. Li, A. Pyarelal, H. Song, and S. Su, in preparation.
+\section*{Talks}
+  \emph{Machine Learning in Particle Physics}, Tucson Data Science Meetup
+\hfill \textit{ November 2016}\\
+  APS Four Corners + Texas Meeting, New Mexico State University, Las Cruces, NM
+\hfill \textit{ Oct 2014}\\
+  Phenomenology 2015, University of Pittsburgh, Pittsburgh, PA
+\hfill \textit{ May 2015}\\
+  Four Corners Section of the APS: Annual Meeting, Utah Valley University, Orem, UT
+\hfill \textit{ Oct 2014}\\
+  23$^{\text{rd}}$ International Conference on Supersymmetry and Unification of Fundamental Interactions,\\ 
+Lake Tahoe, CA 
+\hfill \textit{ Oct 2014}\\
+\section*{Teaching}
+\textsf{\textbf{Teaching Assistant}}, \textsf{ University of Arizona}\hfill\textit{ 2011-present}\\
+  TA for Physics 105 (Introduction to Scientific Computing), Spring 2017\\
+  TA for Physics 381 (Advanced Lab), Fall 2013-present.\\
+\indent Created various supplemental instructional materials including a \href{http://www.physics.arizona.edu/~adarsh/teaching/phys381}{website} with tips for the experiments,\\  
+\indent and a \href{http://www.physics.arizona.edu/~adarsh/teaching/phys381/Error\_Analysis\_Notebook/index.html}{tutorial} on how to perform error analysis and data visualization with Python.\\
+  Lecturer for Physics 102 (Introductory Physics for non-majors), Fall 2012.\\
+ TA for Physics 241/261H Lab: Introductory Electricity and Magnetism, 2011-12.\\
+ TA for Physics 181, the companion lab to the Physics 102 lecture, Summer 2012 \& Summer 2014.\\
+
+\section*{Professional Experience}
+
+ \textsf{\textbf{Senator}}, \textsf{ Reed College Student Senate}\hfill\textit{ 2008-10}\\
+  Allocated over \$450,000 in student body fees to student organizations and wages over three semesters.\\
+ Orchestrated and conducted interviews for 19 student positions as chair of Appointments Committee.\\
+ Spearheaded reform of the elections code as chair of the Bylaws Task Force.
+
+\textsf{\textbf{Resident Assistant}}, \textsf{ Reed College Office of Residence Life}\hfill \textit{ 2008-09}\\
+ Organized six events including a trip to the Oregon coast and  served as a resource for 22 residents.
+\section*{Service}
+
+  GPSC Travel Grant Judge \hfill\emph{Summer 2015}\\
+  Member of Physics Grad Council \hfill\emph{2012-13}\\
+ Member of the Associated Graduate Council for the College of Science \hfill\emph{2012-13}\\
+ Organized the weekly departmental graduate student seminar series (Grad talks) \hfill\emph{2012-13}\\
+ Arizona Assurance Mentor \hfill\emph{2012-13}
+\section*{Skills}
+  Wrangling big data with C++.\\ 
+  Scripting, plotting and data analysis with \textsc{python} and \texttt{pandas}\\ 
+  Software version control with \textsc{git} and \href{http://www.github.com/adarshp}{Github}\\
+  Website design with \textsc{HTML} and \textsc{CSS}, static site generation.\\ 
+  Writing scientific manuscripts and typesetting them with \LaTeX\\ 
+  Languages: English (native speaker), Hindi, Malayalam
+\section*{Professional Affiliations}
+
+ American Physical Society
+
+\end{document}
