@@ -22,10 +22,10 @@
 \usepackage{fontawesome}
 \usepackage{fontspec}
 \setmainfont[%
-  Ligatures = {Common, TeX},Numbers = {OldStyle, Proportional},Alternate=1,
-  ItalicFeatures={Style=Swash},
+  Ligatures = {Common, TeX},Numbers = {OldStyle, Proportional},
+  %ItalicFeatures={Style=Swash},
   SmallCapsFeatures={Letters=SmallCaps,LetterSpace=6},
-]{Minion Pro}
+]{Adobe Jenson Pro}
 \setsansfont[%
 Numbers = {OldStyle, Proportional},
 BoldFont={ScalaSans Bold},
@@ -180,6 +180,7 @@ BoldFont={ScalaSans Bold},
 % Misc layout commands
 % =============================================================================
 
+\newcolumntype{R}[1]{>{\raggedleft}p{#1}}
 \linespread{1.1}
 
 % =============================================================================
@@ -201,7 +202,6 @@ Tucson, \textsc{az} 85719  \hfill \texttt{\href{http://www.github.com/adarshp}{h
 {\color{gray}\hrule}
 \medskip
 
-\newcolumntype{R}[1]{>{\raggedleft}p{#1}}
 \section*{Research Interests}
 \begin{tabularx}{\linewidth}{R{0.5in}X}
 & Theoretical particle physics, machine learning, computer vision, Bayesian modeling.
@@ -211,7 +211,7 @@ Tucson, \textsc{az} 85719  \hfill \texttt{\href{http://www.github.com/adarshp}{h
   \emph{#1} & {\bfseries \sffamily #2}\\
   & {\sffamily #3}\\
   & Advisor: {\scshape \MakeTextLowercase{#4}}\\
-  & Thesis: \href{#5}{\emph{#6}}\\\\
+  & Thesis: \href{#5}{\emph{#6}}\\
 }
 \begin{tabularx}{\linewidth}{R{0.5in}X}
 \degree{2011-17}%
@@ -219,7 +219,7 @@ Tucson, \textsc{az} 85719  \hfill \texttt{\href{http://www.github.com/adarshp}{h
   {Ph. D. in Physics}%
   {Shufang Su}%
   {https://github.com/adarshp/dissertation}%
-  {Hidden Higgses and Dark Matter at Current and Future Colliders}
+  {Hidden Higgses and Dark Matter at Current and Future Colliders}\\
 \degree{2007-11}%
   {Reed College}%
   {B. A. in Physics}%
@@ -242,15 +242,15 @@ Tucson, \textsc{az} 85719  \hfill \texttt{\href{http://www.github.com/adarshp}{h
 \newcommand{\publication}[4]{
   \emph{#1} & {\itshape #2}\\
   & #3\\ % Author(s)
-  & #4\\ % Journal
+  & #4 % Journal
 }
 \begin{tabularx}{\linewidth}{R{0.5in}X}
 \publication{2017}{A Razor Search for Bino Dark Matter at 100 TeV}%
     {A. Pyarelal, and S. Su (in preparation)}%
-    {}
+    {}\\
 \publication{}{Exotic Higgs Decays at 14 and 100 TeV}%
     {F. Kling, H. Li, A. Pyarelal, H. Song, and S. Su (in preparation)}%
-    {}
+    {}\\
 \publication{2015}{Light Charged Higgs Bosons to AW/HW via Top Decay}%
     {F. Kling, A. Pyarelal, and S. Su}%
     {\href{http://link.springer.com/article/10.1007\%2FJHEP11\%282015\%29051}{Journal of High Energy Physics, \textbf{11} (2015) 051}}
@@ -258,10 +258,11 @@ Tucson, \textsc{az} 85719  \hfill \texttt{\href{http://www.github.com/adarshp}{h
 \section*{Talks}
 \newcommand{\talk}[2]{\emph{#1} & #2\\}
 \begin{tabularx}{\linewidth}{R{0.5in}X}
-  \talk{2016}{Tucson Data Science Meetup}
-  \talk{2015}{Phenomenology 2015}
-  \talk{2014-16}{Annual Meeting of the APS Four Corners Section}
-  \talk{2014}{23$^{\text{rd}}$ International Conference on Supersymmetry and Unification of Fundamental Interactions}
+  \talk{2016}{Tucson Data Science Meetup, Tucson, AZ}
+  \talk{2015}{Phenomenology 2015 Symposium, University of Pittsburgh}
+  \talk{2014-16}{Annual Meeting(s) of the APS Four Corners Section}
+  \talk{2014}{23$^{\text{rd}}$ International Conference on Supersymmetry and Unification of Fundamental Interactions, %
+              Lake Tahoe, CA}
 \end{tabularx}
 \section*{Teaching}
 \newcommand{\experience}[3]{
@@ -281,18 +282,6 @@ and a \href{http://www.physics.arizona.edu/~adarsh/teaching/phys381/Error\_Analy
 \item TA for Physics 181, the companion lab to the Physics 102 lecture, Summer 2012 \& Summer 2014.
   \end{itemize}
 }
- \end{tabularx}
-
-\section*{Professional Experience}
-
-\begin{tabularx}{\linewidth}{R{0.5in}X}
-  \experience{2008-10}{\textsf{\textbf{Senator}}, \textsf{ Reed College Student Senate}}
-{  Allocated over \$450,000 in student body fees to student organizations and wages over three semesters.
- Orchestrated and conducted interviews for 19 student positions as chair of Appointments Committee.
- Spearheaded reform of the elections code as chair of the Bylaws Task Force.}
-
- \experience{2008-09}{\textsf{\textbf{Resident Assistant}}, \textsf{ Reed College Office of Residence Life}}{
- Organized six events including a trip to the Oregon coast and  served as a resource for 22 residents.}
  \end{tabularx}
 
 \section*{Service}
