@@ -1,24 +1,14 @@
 % ==========================================================================
 % Curriculum Vitae - Adarsh Pyarelal
-% Based on Kieran Healy's CV
 % ==========================================================================
-\documentclass[final,oneside,10pt]{memoir}
+\documentclass[final,oneside,12pt]{memoir}
 
 % Silence some noisy warnings temporarily
 \usepackage{silence}
 \WarningFilter{fontaxes}{I don't know how to decode}
-\WarningFilter{latex}{Marginpar}
-\WarningFilter{hyperref}{subfigure}
 \usepackage[tracking]{microtype}
-\usepackage[smaller]{acronym}
-\renewcommand*{\aclabelfont}[1]{\acsfont{\scshape #1}}
-\usepackage{pgfornament}
+\usepackage{amsmath}
 
-% ==========================================================================
-% If using Minion Pro
-% ==========================================================================
-
-\usepackage[onlymath, minionint, swash,lf]{MinionPro}
 \usepackage{fontawesome}
 \usepackage{fontspec}
 \setmainfont[%
@@ -31,23 +21,6 @@ Numbers = {OldStyle, Proportional},
 BoldFont={ScalaSans Bold},
 ]{Scala Sans}
 \setmonofont{Menlo}[Scale=MatchLowercase]
-\usepackage{pifont} % To get Minion Pro ornaments
-
-% ==========================================================================
-% If not using Minion Pro, uncomment the lines below, and comment out the lines
-% in the block above.
-% ==========================================================================
-% \usepackage[T1]{fontenc}
-% \usepackage{mathpazo}
-% \newcommand{\slantfrac}[2]{\frac{#1}{#2}}
-% =============================================================================
-
-\usepackage[toc]{tabfigures}
-% \PassOptionsToPackage{utf8}{inputenc}
-	% \usepackage{inputenc}
-
-\PassOptionsToPackage{fleqn}{amsmath}   % math environments and more by the AMS 
-    \usepackage{amsmath}
 
 % =============================================================================
 % Colors
@@ -81,7 +54,7 @@ BoldFont={ScalaSans Bold},
     pdfauthor={Adarsh Pyarelal},%
     pdfsubject={},%
     pdfkeywords={},%
-    pdfcreator={pdfLaTeX},%
+    pdfcreator={luaLaTeX},%
     pdfproducer={LaTeX}%
 }   
 
@@ -92,14 +65,11 @@ BoldFont={ScalaSans Bold},
 \def\myauthor{Adarsh Pyarelal}
 \def\mytitle{Curriculum Vitae}
 \def\mycopyright{\myauthor}
-\def\mykeywords{}
-\def\mybibliostyle{plain}
-\def\mybibliocommand{}
-\def\mysubtitle{}
+\def\myphone{503 360 8824}
 \def\myaffiliation{University of Arizona}
 \def\myaddress{Department of Physics}
 \def\myemail{adarsh@email.arizona.edu}
-\def\myweb{adarsh.netlify.com}
+\def\myweb{adarsh.cc}
 \date{} % not used (revision control instead)
 
 % =============================================================================
@@ -110,203 +80,201 @@ BoldFont={ScalaSans Bold},
 \setlxvchars[\normalfont] % about 66 characters per column
 \setxlvchars[\normalfont\footnotesize] % about 45 characters per column
 
-% Set outer and spine margins (designed for Minion Pro 10pt, change accordingly
-% for different fonts. A wide margin is chosen both for legibility of the
-% typeblock and for tight integration of marginfigures and margin footnotes.
-\setlrmarginsandblock{1.5in}{1.5in}{} % This sets \textwidth to 281.0 pt
+% Set outer and spine margins 
+\setlrmarginsandblock{1.5in}{1.5in}{} 
 
 % Set upper and lower margins
 \setulmarginsandblock{1.22in}{1.22in}{*}
 
-% Set properties of margin notes, sidecaptioned floats, and footnotes in the
-% margin.
-\setmarginnotes{0.2in}{1.9in}{2\onelineskip}
-\setsidecaps{0.2in}{1.9in}
-\sidecapmargin{outer}
-\renewcommand*{\sidecapstyle}{\normalfont\footnotesize}
-\setsidecappos{c}
-
-% Set footnotes in the margin rather than at the foot of the page
-\footnotesinmargin
-\setsidefeet{\marginparsep}{1.9in}{0.2in}{0pt}{\flushleftright\footnotesize}{*}
-
-% Integrate the counters of the sidefootnotes and footnotes in margin.
-\letcountercounter{sidefootnote}{footnote}
-\setlength{\footmarkwidth}{0em}
-\setlength{\footmarksep}{-\footmarkwidth}
-\setlength{\footparindent}{1em}
-\sideparmargin{outer}
-
-\renewcommand*{\sideparfont}{\color{Maroon}\itshape}
-\renewcommand*{\sideparvshift}{2\baselineskip}
-\marginparmargin{outer}
-
-% Style the entries in the Table of Contents
-\renewcommand*{\contentsname}{Table of Contents}
-\renewcommand*{\cftchapterfont}{\scshape\MakeTextLowercase}
-\renewcommand*{\cftpartfont}{\color{Maroon}\scshape\MakeTextLowercase}
-\captionstyle[\centering]{\sffamily\footnotesize}
-\captionnamefont{\color{Maroon}\footnotesize\sffamily}
 % Reduce spacing between list items
 \tightlists
 
-% Make marginfigures centered by default
-\setfloatadjustment{marginfigure}{\centering}
+\setsecheadstyle{\large\scshape\hspace{0.7in}\MakeTextLowercase}
 
-% Headers and footers - page numbers, section headings, etc.
-\makepagestyle{tufte}
-\createmark{chapter}{left}{nonumber}{}{}
-\createmark{section}{right}{nonumber}{}{}
-\makeoddhead{tufte}{}{}{\scshape\MakeTextLowercase{\leftmark}~~|~~\thepage}
-\makeevenhead{tufte}{\thepage~~|~~\scshape\MakeTextLowercase{\rightmark}}{}{}
- \makerunningwidth{tufte}[8in]{8in}
-%\aliaspagestyle{chapter}{empty}
-\nouppercaseheads
-\pagestyle{tufte}
+%\setafterparaskip{-0.5em}
+\newcolumntype{R}[1]{>{\raggedleft}p{#1}}
 
-\setsecheadstyle{\Large\scshape\hspace{0.54in}\MakeTextLowercase}
-% Styling Part headings
-\renewcommand{\parttitlefont}{\color{Maroon}\normalfont\scshape%
-                              \MakeTextLowercase}
-\renewcommand{\partnamefont}{\normalfont}
-\renewcommand{\partnumfont}{\normalfont}
-\setafterparaskip{-0.5em}
-
-% Setting up figures to allow subfloats
-\newsubfloat{figure}
 \checkandfixthelayout
+% =============================================================================
+% Custom macros
+% =============================================================================
+
+\newcommand{\customsection}[1]{
+  \section*{#1} {\color{gray}\hrule}
+}
 
 % =============================================================================
 % Misc layout commands
-% =============================================================================
 
-\newcolumntype{R}[1]{>{\raggedleft}p{#1}}
 \linespread{1.1}
-
 % =============================================================================
 
 \begin{document}
-%%%------------------------------------------------------------------------
-%%% Address and contact block
-%%%------------------------------------------------------------------------
-\pagestyle{empty}
-{\noindent \LARGE\scshape\color{Maroon}{\MakeTextLowercase\myauthor}}
-\bigskip
-{\color{gray}\hrule}
-\bigskip
-{\small
-\noindent \myaddress \hfill  \texttt{\href{mailto:\myemail}{\myemail}} \, \faEnvelope~\\
-\myaffiliation \hfill \texttt{\href{http://www.physics.arizona.edu/\~adarsh}{\myweb}} \, \faGlobe~\\
-Tucson, \textsc{az} 85719  \hfill \texttt{\href{http://www.github.com/adarshp}{github.com/adarshp}} ~\faGithub~\\
-}
-{\color{gray}\hrule}
-\medskip
+% =============================================================================
+% Address and contact block
+% =============================================================================
 
-\section*{Research Interests}
-\begin{tabularx}{\linewidth}{R{0.5in}X}
-& Theoretical particle physics, machine learning, computer vision, Bayesian modeling.
-\end{tabularx}
-\section*{Education}
-\newcommand{\degree}[6]{
-  \emph{#1} & {\bfseries \sffamily #2}\\
-  & {\sffamily #3}\\
-  & Advisor: {\scshape \MakeTextLowercase{#4}}\\
-  & Thesis: \href{#5}{\emph{#6}}\\
+\pagestyle{empty}
+\begin{center}
+{\LARGE\scshape\color{Maroon}{\MakeTextLowercase\myauthor\\}}
+{
+  \bigskip
+  847 N 2$^{nd}$ Ave, Tucson AZ 85719\\
+  \faGlobe~~\texttt{\href{\myweb}{\myweb}} ~~~~\faEnvelope~~\texttt{\href{mailto:\myemail}{\myemail}}
+
+\bigskip
+
 }
-\begin{tabularx}{\linewidth}{R{0.5in}X}
-\degree{2011-17}%
-  {University of Arizona}%
+\end{center}
+
+\customsection{Education}
+\newcommand{\degree}[5]{
+  \emph{#1} & {\bfseries \sffamily #2},
+  {\sffamily #3}\\
+  & Thesis: \href{#4}{\emph{#5}}
+}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+\degree{2017}%
   {Ph. D. in Physics}%
-  {Shufang Su}%
+  {University of Arizona}%
   {https://github.com/adarshp/dissertation}%
-  {Hidden Higgses and Dark Matter at Current and Future Colliders}\\
-\degree{2007-11}%
-  {Reed College}%
+  {Hidden Higgses and Dark Matter at Current and Future Colliders}\\\addlinespace
+\degree{2011}%
   {B. A. in Physics}%
-  {Nelia Mann}%
-  {http://www.physics.arizona.edu/~adarsh/research/reedthesis/}%
+  {Reed College}%
+  {https://adarsh.netlify.com/reedthesis.pdf}%
   {Contribution of the neutral pion Regge trajectory to the exclusive central production of $\eta$(548) mesons in high energy proton/proton collisions}
-\end{tabularx}
-\section*{Honors and Awards}
-\newcommand{\award}[2]{\emph{#1} & #2\\}
-\begin{tabularx}{\linewidth}{R{0.5in}X}
-\award{2016,17}{Physics Publications/Presentations Award}
-\award{2014,17}{Outstanding Graduate Student Colloquium Presentation}
-\award{2016}{Galileo Circle Scholarship}
-\award{2015}{Graduate and Professional Student Council Travel Award}
-\award{}{Professor C. Y. Fan `FanFare' Travel Award}
-\award{}{Graduate College Fellowship in Physics}
-\award{2014-16}{APS 4CS Student Travel Grant}
-\end{tabularx}
-\section*{Publications}
+\end{ctabular}
+
+\customsection{Publications}
+
 \newcommand{\publication}[4]{
   \emph{#1} & {\itshape #2}\\
   & #3\\ % Author(s)
-  & #4 % Journal
+  & #4
 }
-\begin{tabularx}{\linewidth}{R{0.5in}X}
+\begin{ctabular}{R{0.5in}p{4.235in}}
 \publication{2017}{A Razor Search for Bino Dark Matter at 100 TeV}%
-    {A. Pyarelal, and S. Su (in preparation)}%
-    {}\\
+    {A. Pyarelal, and S. Su}%
+    {(Manuscript in preparation)}\\\addlinespace
 \publication{}{Exotic Higgs Decays at 14 and 100 TeV}%
-    {F. Kling, H. Li, A. Pyarelal, H. Song, and S. Su (in preparation)}%
-    {}\\
+    {F. Kling, H. Li, A. Pyarelal, H. Song, and S. Su}%
+    {(Manuscript in preparation)}\\\addlinespace
 \publication{2015}{Light Charged Higgs Bosons to AW/HW via Top Decay}%
     {F. Kling, A. Pyarelal, and S. Su}%
     {\href{http://link.springer.com/article/10.1007\%2FJHEP11\%282015\%29051}{Journal of High Energy Physics, \textbf{11} (2015) 051}}
-\end{tabularx}
-\section*{Talks}
-\newcommand{\talk}[2]{\emph{#1} & #2\\}
-\begin{tabularx}{\linewidth}{R{0.5in}X}
-  \talk{2016}{Tucson Data Science Meetup, Tucson, AZ}
-  \talk{2015}{Phenomenology 2015 Symposium, University of Pittsburgh}
-  \talk{2014-16}{Annual Meeting(s) of the APS Four Corners Section}
-  \talk{2014}{23$^{\text{rd}}$ International Conference on Supersymmetry and Unification of Fundamental Interactions, %
-              Lake Tahoe, CA}
-\end{tabularx}
-\section*{Teaching}
-\newcommand{\experience}[3]{
-  \emph{#1} & #2\\
-            & #3\\
-}
-\begin{tabularx}{\linewidth}{R{0.5in}X}
-  \experience{2011-17}{\textsf{\textbf{Teaching Assistant}}, \textsf{ University of Arizona}}
-    {
-      \begin{itemize}
-        \item Physics 105 (Introduction to Scientific Computing), Spring 2017
-        \item Physics 381 (Advanced Lab), Fall 2013-present.
-             Created various supplemental instructional materials including a \href{http://www.physics.arizona.edu/~adarsh/teaching/phys381}{website} with tips for the experiments,
-and a \href{http://www.physics.arizona.edu/~adarsh/teaching/phys381/Error\_Analysis\_Notebook/index.html}{tutorial} on how to perform error analysis and data visualization with Python.
-\item  Lecturer for Physics 102 (Introductory Physics for non-majors), Fall 2012.
-\item TA for Physics 241/261H Lab: Introductory Electricity and Magnetism, 2011-12.
-\item TA for Physics 181, the companion lab to the Physics 102 lecture, Summer 2012 \& Summer 2014.
-  \end{itemize}
-}
- \end{tabularx}
+\end{ctabular}
 
-\section*{Service}
-\newcommand{\service}[2]{\emph{#1} & #2\\}
-\begin{tabularx}{\linewidth}{R{0.5in}X}
-\service{2015}{GPSC Travel Grant Judge }
-\service{2012-13}{Member of Physics Grad Council}
-\service{}{Member of the Associated Graduate Council for the College of Science}
-\service{}{Organized the weekly departmental graduate student seminar series}
+\customsection{Honors and Awards}
+\newcommand{\award}[2]{\emph{#1} & #2}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+\award{2016,17}{Dept. of Physics Publications/Presentations Award}\\
+\award{2014,17}{Outstanding Graduate Student Colloquium Presentation}\\
+\award{2016}{Galileo Circle Scholarship}\\
+\award{2015}{Graduate and Professional Student Council Travel Award}\\
+\award{}{Professor C. Y. Fan `FanFare' Travel Award}\\
+\award{}{Graduate College Fellowship in Physics}\\
+\award{2014-16}{APS 4CS Student Travel Grant}
+\end{ctabular}
+
+\customsection{Talks}
+\newcommand{\talk}[4]{
+  \emph{#1} & \emph{#2}\\
+  & #3, #4
+}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+  \talk{2016}{Machine Learning and Particle Physics}%
+             {Tucson Data Science Meetup}
+             {Tucson, AZ}\\\addlinespace
+  \talk{}{A Razor Search for Dark Matter at a Future 100 TeV Collider}%
+             {Joint Meeting of the Four Corners and Texas Sections of the American Physical Society}
+             {Las Cruces, NM}\\\addlinespace
+  \talk{2015}{Light Charged Higgs Bosons in Single-Top Production}%
+             {Phenomenology 2015 Symposium}
+             {University of Pittsburgh}\\\addlinespace
+  \talk{}{Light Charged Higgs Bosons in Two Higgs Doublet Models}%
+             {Annual Meeting of the APS Four Corners Section}
+             {Tempe, AZ}\\\addlinespace
+  \talk{2014}{Light Charged Higgs Bosons in Single-Top Production}%
+             {Annual Meeting of the APS Four Corners Section}
+             {Orem, UT}\\\addlinespace
+  \talk{}{Light Charged Higgs Bosons to AW/HW via Top Decay}%
+  {23$^{\text{rd}}$ International Conference on Supersymmetry and Unification of Fundamental Interactions}
+  {Lake Tahoe, CA}
+\end{ctabular}
+
+\newcommand{\research}[1]{ & #1 }
+
+\newcommand{\project}[1]{\medskip\textit{#1}\medskip}
+\customsection{Research Experience}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+  \textit{2017–} & \textsf{\textbf{Postdoctoral Researcher}}, \textsf{ University of Arizona}\\
+  \research{
+    I am currently developing and implementing algorithms to infer the structure of chemical reaction pathways within cells, using data automatically extracted from biomedical research papers. Taking a Bayesian generative approach, I have implemented an \textsc{mcmc} sampler to recover the maximum a posteriori estimate of the graph structure of a pathway given a set of binary interaction data.
+} \\\addlinespace
+  \textit{2016-17} & \textsf{\textbf{Research Assistant}}, \textsf{ University of Arizona}\\
+&    During the course of my doctoral research, I developed three analyses aimed at discovering or constraining new physics models in high-energy particle collision experiments.\\
+&\project{Exotic Higgs Decays at 14 and 100 TeV}\\
+&    This analysis aims to determine the prospects of exotic Higgs decay modes at a 100 TeV collider for all physically viable Two-Higgs Doublet Models, using boosted decision tree classifiers and physics-motivated input features.\\
+&    \project{A Razor Search for Bino Dark Matter at 100 TeV}\\
+&    I designed an analysis to examined the prospects of finding bino-like dark matter resulting from the decay of pair-produced higgsinos at a 100 TeV collider, using razor variables and boosted decision trees.\\
+&    \project{Light Charged Higgs Bosons to AW/HW via Top Decay}\\
+&    This analysis is designed to find a charged Higgs produced via the decay of a top quark at the 14 TeV \textsc{lhc}, in the context of a Type-II Two Higgs Doublet Model, using a unique kinematical angle to discriminate between signal and background events.\\
+ \end{ctabular}
+
+\newcommand{\teaching}[1]{
+  & #1\\
+}
+\customsection{Teaching Experience}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+  \textit{2011-17} & \textsf{\textbf{Teaching Assistant}}, \textsf{ University of Arizona}\\
+  \teaching{Introduction to Scientific Computing (Spring 2017)}
+  \teaching{Advanced Lab, (Fall 2013-Fall 2016).}
+  \teaching{Introductory Physics for non-majors - Lecturer (Fall 2012).}
+  \teaching{Introductory Electricity and Magnetism (2011-12).}
+  \teaching{Introductory Physics for non-majors - Lab (Summer 2012 \& Summer 2014).}
+ \end{ctabular}
+
+\customsection{Service}
+\newcommand{\service}[2]{\emph{#1} & #2}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+\service{2015}{GPSC Travel Grant Judge }\\
+\service{2012-13}{Member of Physics Grad Council}\\
+\service{}{Member of the Associated Graduate Council for the College of Science}\\
+\service{}{Organized the weekly departmental graduate student seminar series}\\
 \service{}{Arizona Assurance Mentor}
-\end{tabularx}
-\section*{Skills}
-\newcommand{\skill}[2]{\textsc{#1} & #2\\}
-\begin{tabularx}{\linewidth}{R{0.5in}X}
-\skill{C++} {Wrangling big data with C++.}
-  \skill{python}{   Scripting, plotting \& data analysis with \textsc{python} and \texttt{pandas}}
-  \skill{git}{ Software version control with \textsc{git} and \href{http://www.github.com/adarshp}{Github}}
-\skill{web}{ Website design with \textsc{HTML} and \textsc{CSS}, static site generation.}
-\skill{\LaTeX}{ Writing scientific manuscripts and typesetting them with \LaTeX}
-\skill{misc.} {Languages: English (native), Hindi, Malayalam}
-\end{tabularx}
-\section*{Professional Affiliations}
-\newcommand{\affiliation}[2]{\textsc{#1} & #2\\}
-\begin{tabularx}{\linewidth}{R{0.5in}X}
-\affiliation{aps}{American Physical Society}
-\end{tabularx}
+\end{ctabular}
+
+\customsection{Skills}
+\newcommand{\skill}[1]{ & #1}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+\skill{Data analysis with \textsc{c++} and \textsc{python}.}\\
+  \skill{Software version control with \textsc{git} and \href{http://www.github.com/adarshp}{Github}}\\
+\skill{Website design with \textsc{html} and \textsc{css}, static site generation.}\\
+\skill{Writing and typesetting scientific manuscripts with \LaTeX}\\
+\skill{Languages: English (native), Hindi, Malayalam}
+\end{ctabular}
+
+\customsection{Professional Affiliations}
+\newcommand{\affiliation}[2]{\textsc{#1} & #2}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+\affiliation{}{American Physical Society}
+\end{ctabular}
+
+\customsection{References}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+& Kobus Barnard\\
+& Professor, Department of Computer Science\\
+& University of Arizona\\
+& \texttt{\href{mailto:kobus@cs.arizona.edu}{kobus@cs.arizona.edu}}\\\addlinespace
+& Clayton Morrison\\
+& Associate Professor, School of Information\\
+& University of Arizona\\
+& \texttt{\href{mailto:claytonm@email.arizona.edu}{claytonm@email.arizona.edu}}\\\addlinespace
+& Shufang Su\\
+& Professor, Department of Physics\\
+& University of Arizona\\
+& \texttt{\href{mailto:shufang@physics.arizona.edu}{shufang@physics.arizona.edu}}\\
+\end{ctabular}
 
 \end{document}
