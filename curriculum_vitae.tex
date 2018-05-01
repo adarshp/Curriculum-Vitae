@@ -80,19 +80,17 @@ BoldFont={ScalaSans Bold},
 \setlxvchars[\normalfont] % about 66 characters per column
 \setxlvchars[\normalfont\footnotesize] % about 45 characters per column
 
-% Set outer and spine margins 
 \setlrmarginsandblock{1.5in}{1.5in}{} 
-
-% Set upper and lower margins
 \setulmarginsandblock{1.22in}{1.22in}{*}
 
-% Reduce spacing between list items
-\tightlists
 
-\setsecheadstyle{\large\scshape\hspace{0.7in}\MakeTextLowercase}
+\tightlists % Reduce spacing between list items
+
+\setsecheadstyle{\large\scshape\hspace{0.0in}\MakeTextLowercase}
 
 %\setafterparaskip{-0.5em}
 \newcolumntype{R}[1]{>{\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright}p{#1}}
 
 \checkandfixthelayout
 % =============================================================================
@@ -115,18 +113,20 @@ BoldFont={ScalaSans Bold},
 % =============================================================================
 
 \pagestyle{empty}
-\begin{center}
-{\LARGE\scshape\color{Maroon}{\MakeTextLowercase\myauthor\\}}
+
 {
-  \bigskip
-  847 N 2$^{nd}$ Ave, Tucson AZ 85719\\
-  \faGlobe~~\texttt{\href{\myweb}{\myweb}} ~~~~\faEnvelope~~\texttt{\href{mailto:\myemail}{\myemail}}
+  {\LARGE\scshape\color{Maroon}{\MakeTextLowercase\myauthor}\\
+  {\small \color{gray}\hrule}
+    \bigskip
+}}
 
+\begin{tabularx}{5in}{Xr}
+School of Information & \faEnvelope~~\texttt{\href{mailto:\myemail}{\myemail}}\\
+University of Arizona & \faGlobe~~\texttt{\href{\myweb}{\myweb}}\\
+Tucson AZ 85719 & 
+\end{tabularx}
 \bigskip
-
-}
-\end{center}
-
+\medskip
 \customsection{Education}
 \newcommand{\degree}[5]{
   \emph{#1} & {\bfseries \sffamily #2},
@@ -144,6 +144,20 @@ BoldFont={ScalaSans Bold},
   {Reed College}%
   {https://adarsh.netlify.com/reedthesis.pdf}%
   {Contribution of the neutral pion Regge trajectory to the exclusive central production of $\eta$(548) mesons in high energy proton/proton collisions}
+\end{ctabular}
+
+\customsection{Professional Appointments}
+
+\newcommand{\appointment}[4]{
+  \emph{#1} & {\bfseries \sffamily #2}\\
+            & #3, #4
+}
+
+\begin{ctabular}{R{0.5in}p{4.235in}}
+\appointment{2017 - }%
+  {Postdoctoral Research Associate}%
+  {School of Information}%
+  {University of Arizona}%
 \end{ctabular}
 
 \customsection{Publications}
@@ -210,7 +224,15 @@ BoldFont={ScalaSans Bold},
 \begin{ctabular}{R{0.5in}p{4.235in}}
   \textit{2017–} & \textsf{\textbf{Postdoctoral Researcher}}, \textsf{ University of Arizona}\\
   \research{
-    I am currently developing and implementing algorithms to infer the structure of chemical reaction pathways within cells, using data automatically extracted from biomedical research papers. Taking a Bayesian generative approach, I have implemented an \textsc{mcmc} sampler to recover the maximum a posteriori estimate of the graph structure of a pathway given a set of binary interaction data.
+    \project{Big Mechanism}\\
+&    As part of DARPA's Big Mechanism program, I am currently developing and
+    implementing algorithms to infer the structure of chemical reaction pathways
+    within cells, using data automatically extracted from biomedical research
+    papers. \\
+&    \project{World Modelers}\\
+&    For DARPA's World Modelers program, I am designing algorithms to
+    assemble and parameterize quantitative models of food security from machine
+    reading of texts such as agency reports and news articles.
 } \\\addlinespace
   \textit{2016-17} & \textsf{\textbf{Research Assistant}}, \textsf{ University of Arizona}\\
 &    During the course of my doctoral research, I developed three analyses aimed at discovering or constraining new physics models in high-energy particle collision experiments.\\
@@ -249,7 +271,8 @@ BoldFont={ScalaSans Bold},
 \newcommand{\skill}[1]{ & #1}
 \begin{ctabular}{R{0.5in}p{4.235in}}
 \skill{Data analysis with \textsc{c++} and \textsc{python}.}\\
-  \skill{Software version control with \textsc{git} and \href{http://www.github.com/adarshp}{Github}}\\
+  \skill{Software version control with \textsc{git} and
+  \href{http://www.github.com/adarshp}{Github}}\\
 \skill{Website design with \textsc{html} and \textsc{css}, static site generation.}\\
 \skill{Writing and typesetting scientific manuscripts with \LaTeX}\\
 \skill{Languages: English (native), Hindi, Malayalam}
