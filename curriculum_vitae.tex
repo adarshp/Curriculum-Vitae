@@ -8,7 +8,6 @@
 \WarningFilter{fontaxes}{I don't know how to decode}
 \usepackage[tracking]{microtype}
 \usepackage{amsmath}
-
 \usepackage{fontawesome}
 \usepackage{fontspec}
 \setmainfont[%
@@ -127,6 +126,11 @@ Tucson AZ 85719 &
 \end{tabularx}
 \bigskip
 \medskip
+
+% =============================================================================
+% Education
+% =============================================================================
+
 \customsection{Education}
 \newcommand{\degree}[5]{
   \emph{#1} & {\bfseries \sffamily #2},
@@ -138,13 +142,18 @@ Tucson AZ 85719 &
   {Ph. D. in Physics}%
   {University of Arizona}%
   {https://github.com/adarshp/dissertation}%
-  {Hidden Higgses and Dark Matter at Current and Future Colliders}\\\addlinespace
-\degree{2011}%
+  {Hidden Higgses and Dark Matter at Current and Future
+  Colliders}\\\addlinespace \degree{2011}%
   {B. A. in Physics}%
   {Reed College}%
   {https://adarsh.netlify.com/reedthesis.pdf}%
-  {Contribution of the neutral pion Regge trajectory to the exclusive central production of $\eta$(548) mesons in high energy proton/proton collisions}
+  {Contribution of the neutral pion Regge trajectory to the exclusive central
+  production of $\eta$(548) mesons in high energy proton/proton collisions}
 \end{ctabular}
+
+% =============================================================================
+% Professional Appointments
+% =============================================================================
 
 \customsection{Professional Appointments}
 
@@ -159,6 +168,10 @@ Tucson AZ 85719 &
   {School of Information}%
   {University of Arizona}%
 \end{ctabular}
+
+% =============================================================================
+% Publications
+% =============================================================================
 
 \customsection{Publications}
 
@@ -176,7 +189,8 @@ Tucson AZ 85719 &
     {(Manuscript in preparation)}\\\addlinespace
 \publication{2015}{Light Charged Higgs Bosons to AW/HW via Top Decay}%
     {F. Kling, A. Pyarelal, and S. Su}%
-    {\href{http://link.springer.com/article/10.1007\%2FJHEP11\%282015\%29051}{Journal of High Energy Physics, \textbf{11} (2015) 051}}
+    {\href{http://link.springer.com/article/10.1007\%2FJHEP11\%282015\%29051}{Journal
+      of High Energy Physics, \textbf{11} (2015) 051}}
 \end{ctabular}
 
 \customsection{Honors and Awards}
@@ -191,12 +205,25 @@ Tucson AZ 85719 &
 \award{2014-16}{APS 4CS Student Travel Grant}
 \end{ctabular}
 
+\customsection{Grants}
+\newcommand{\grant}[5]{\emph{#1} & #2, \emph{#3}, #4, (#5)}
+\begin{ctabular}{R{0.5in}p{4.235in}}
+  \grant{2018-20}%
+  {Co-Investigator}%
+  {AutoMATES: Automated Model Assembly from Text, Equations, and Software}
+  {Defense Advanced Research Projects Agency}%
+  {\$967,678}%
+\end{ctabular}
+
 \customsection{Talks}
 \newcommand{\talk}[4]{
   \emph{#1} & \emph{#2}\\
   & #3, #4
 }
 \begin{ctabular}{R{0.5in}p{4.235in}}
+  \talk{2018}{Causal Analysis Graphs from Text}%
+             {DARPA World Modelers PI Meeting}
+             {Arlington, VA}\\\addlinespace
   \talk{2016}{Machine Learning and Particle Physics}%
              {Tucson Data Science Meetup}
              {Tucson, AZ}\\\addlinespace
