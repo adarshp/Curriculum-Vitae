@@ -1,6 +1,3 @@
-% ==========================================================================
-% Curriculum Vitae - Adarsh Pyarelal
-% ==========================================================================
 \documentclass[final,oneside,12pt]{memoir}
 
 % Silence some noisy warnings temporarily
@@ -20,13 +17,12 @@ Numbers = {OldStyle, Proportional},
 BoldFont={ScalaSans Bold},
 ]{Scala Sans}
 \setmonofont{Menlo}[Scale=MatchLowercase]
-
+\newcommand{\name}{Adarsh Pyarelal}
 % =============================================================================
 % Colors
 % =============================================================================
 
-\PassOptionsToPackage{dvipsnames}{xcolor}
-    \RequirePackage{xcolor} % [dvipsnames] 
+\usepackage[dvipsnames, table]{xcolor}
 \definecolor{webgreen}{rgb}{0,.5,0}
 \definecolor{webbrown}{rgb}{.6,0,0}
 \definecolor{Maroon}{cmyk}{0, 0.87, 0.68, 0.32}
@@ -49,8 +45,8 @@ BoldFont={ScalaSans Bold},
     plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
     hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
     urlcolor=RoyalBlue, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
-    pdftitle={Curriculum Vitae - Adarsh Pyarelal},%
-    pdfauthor={Adarsh Pyarelal},%
+    pdftitle={Curriculum Vitae - \name{}},%
+    pdfauthor={\name{}},%
     pdfsubject={},%
     pdfkeywords={},%
     pdfcreator={luaLaTeX},%
@@ -61,10 +57,7 @@ BoldFont={ScalaSans Bold},
 % Metadata
 % =============================================================================
 
-\def\myauthor{Adarsh Pyarelal}
 \def\mytitle{Curriculum Vitae}
-\def\mycopyright{\myauthor}
-\def\myphone{503 360 8824}
 \def\myaffiliation{University of Arizona}
 \def\myaddress{Department of Physics}
 \def\myemail{adarsh@email.arizona.edu}
@@ -79,25 +72,47 @@ BoldFont={ScalaSans Bold},
 \setlxvchars[\normalfont] % about 66 characters per column
 \setxlvchars[\normalfont\footnotesize] % about 45 characters per column
 
+%\renewcommand\midrule{\arrayrulecolor{gray}\midrule}
+% Original
+% With Arno Pro 12 pt - lxvchars = 4.235 in
+% 8.5 - 4.235 = 4.265
+% Year col = 1.265in 
+% lrmargins + year col should add up to 4.265
 \setlrmarginsandblock{1.5in}{1.5in}{} 
 \setulmarginsandblock{1.22in}{1.22in}{*}
 
+% From cover letter
+%\setlrmarginsandblock{2.15in}{2.15in}{}
+%\setlrmarginsandblock{2.55in}{1.15in}{}
+%% Set upper and lower margins
+%\setulmarginsandblock{1.22in}{1.22in}{*}
+%\sidebarmargin{left}
+%\setsidebars{*}{1.75in}{*}{*}{*}{*}
+%\renewcommand*{\sidebarform}{\raggedright}
 
 \tightlists % Reduce spacing between list items
 
 \setsecheadstyle{\large\scshape\hspace{0.0in}\MakeTextLowercase}
 
+\newcommand{\heading}[1]{%
+  \midrule[0.5pt]
+  \multicolumn{2}{l}{\large\textsc{\MakeTextLowercase{#1}}}\\
+  &\\
+}
 %\setafterparaskip{-0.5em}
+\newcolumntype{Y}{>{\raggedright}p{0.9in}}
 \newcolumntype{R}[1]{>{\raggedleft}p{#1}}
 \newcolumntype{L}[1]{>{\raggedright}p{#1}}
 
 \checkandfixthelayout
+
 % =============================================================================
 % Custom macros
 % =============================================================================
 
-\newcommand{\customsection}[1]{
-  \section*{#1} {\color{gray}\hrule}
+\newcommand{\customsection}[1]{%
+  {\centering \color{gray} \hrule}
+  \section*{#1}%
 }
 
 % =============================================================================
@@ -113,114 +128,116 @@ BoldFont={ScalaSans Bold},
 
 \pagestyle{empty}
 
+% Sidebar style
+%{\centering\LARGE\color{Maroon}\scshape adarsh pyarelal}
+%\bigskip
+
+%\sidebar{
+  %%{\large\color{Maroon}\scshape adarsh pyarelal}\\
+  %%\bigskip
+  %{
+    %\normalsize
+    %847 N 2$^{\text{nd}}$ Ave\\
+    %Tucson, Arizona 85705\\
+    %\bigskip
+    %{\footnotesize\faEnvelope}~~\href{mailto:\myemail}{\texttt{\myemail}}\\
+  %}
+  %\bigskip\bigskip\bigskip 
+%}
+
+% Header style
+{\centering
 {
-  {\LARGE\scshape\color{Maroon}{\MakeTextLowercase\myauthor}\\
-  {\small \color{gray}\hrule}
+  {\LARGE\scshape\color{Maroon}{\MakeTextLowercase\name{}}\\
     \bigskip
 }}
 
-\begin{tabularx}{5in}{Xr}
-School of Information & \faEnvelope~~\texttt{\href{mailto:\myemail}{\myemail}}\\
-University of Arizona & \faGlobe~~\texttt{\href{\myweb}{\myweb}}\\
-Tucson AZ 85719 & 
-\end{tabularx}
+School of Information $\cdot$ University of Arizona $\cdot$ Tucson $\cdot$ Arizona $\cdot$ USA $\cdot$ 85719
+
+\faEnvelope~~\texttt{\href{mailto:\myemail}{\myemail}}\hspace{0.3in}\faGlobe~~\texttt{\href{\myweb}{\myweb}}
+
 \bigskip
 \medskip
+}
 
-% =============================================================================
-% Education
-% =============================================================================
-
-\customsection{Education}
+\newcommand{\entry}[2]{\emph{#1} & #2}
 \newcommand{\degree}[5]{
-  \emph{#1} & {\bfseries \sffamily #2},
-  {\sffamily #3}\\
+  \emph{#1} & {\bfseries \sffamily #2}
+  \hfill {\sffamily #3}\\
   & Thesis: \href{#4}{\emph{#5}}
 }
-\begin{ctabular}{R{0.5in}p{4.235in}}
-\degree{2017}%
-  {Ph. D. in Physics}%
-  {University of Arizona}%
-  {https://github.com/adarshp/dissertation}%
-  {Hidden Higgses and Dark Matter at Current and Future
-  Colliders}\\\addlinespace \degree{2011}%
-  {B. A. in Physics}%
-  {Reed College}%
-  {https://adarsh.netlify.com/reedthesis.pdf}%
-  {Contribution of the neutral pion Regge trajectory to the exclusive central
-  production of $\eta$(548) mesons in high energy proton/proton collisions}
-\end{ctabular}
-
-% =============================================================================
-% Professional Appointments
-% =============================================================================
-
-\customsection{Professional Appointments}
 
 \newcommand{\appointment}[4]{
   \emph{#1} & {\bfseries \sffamily #2}\\
             & #3, #4
 }
 
-\begin{ctabular}{R{0.5in}p{4.235in}}
-\appointment{2017 - }%
-  {Postdoctoral Research Associate}%
-  {School of Information}%
-  {University of Arizona}%
-\end{ctabular}
-
-% =============================================================================
-% Publications
-% =============================================================================
-
-\customsection{Publications}
-
+\newcommand{\me}{\textbf{A. Pyarelal}}
 \newcommand{\publication}[4]{
-  \emph{#1} & {\itshape #2}\\
-  & #3\\ % Author(s)
-  & #4
+  \emph{#1} & #3, {\itshape #2}, #4
 }
-\begin{ctabular}{R{0.5in}p{4.235in}}
-\publication{2017}{A Razor Search for Bino Dark Matter at 100 TeV}%
-    {A. Pyarelal, and S. Su}%
-    {(Manuscript in preparation)}\\\addlinespace
-\publication{}{Exotic Higgs Decays at 14 and 100 TeV}%
-    {F. Kling, H. Li, A. Pyarelal, H. Song, and S. Su}%
-    {(Manuscript in preparation)}\\\addlinespace
-\publication{2015}{Light Charged Higgs Bosons to AW/HW via Top Decay}%
-    {F. Kling, A. Pyarelal, and S. Su}%
-    {\href{http://link.springer.com/article/10.1007\%2FJHEP11\%282015\%29051}{Journal
-      of High Energy Physics, \textbf{11} (2015) 051}}
-\end{ctabular}
 
-\customsection{Honors and Awards}
-\newcommand{\award}[2]{\emph{#1} & #2}
-\begin{ctabular}{R{0.5in}p{4.235in}}
-\award{2016,17}{Dept. of Physics Publications/Presentations Award}\\
-\award{2014,17}{Outstanding Graduate Student Colloquium Presentation}\\
-\award{2016}{Galileo Circle Scholarship}\\
-\award{2015}{Graduate and Professional Student Council Travel Award}\\
-\award{}{Professor C. Y. Fan `FanFare' Travel Award}\\
-\award{}{Graduate College Fellowship in Physics}\\
-\award{2014-16}{APS 4CS Student Travel Grant}
-\end{ctabular}
-
-\customsection{Grants}
 \newcommand{\grant}[5]{\emph{#1} & #2, \emph{#3}, #4, (#5)}
-\begin{ctabular}{R{0.5in}p{4.235in}}
-  \grant{2018-20}%
-  {Co-Investigator}%
-  {AutoMATES: Automated Model Assembly from Text, Equations, and Software}
-  {Defense Advanced Research Projects Agency}%
-  {\$967,678}%
-\end{ctabular}
 
-\customsection{Talks}
 \newcommand{\talk}[4]{
   \emph{#1} & \emph{#2}\\
   & #3, #4
 }
-\begin{ctabular}{R{0.5in}p{4.235in}}
+
+\newcommand{\research}[1]{ & #1 }
+
+\newcommand{\project}[1]{\medskip\textit{#1}\medskip}
+
+\newcommand{\teaching}[1]{&#1\\}
+
+\newcommand{\skill}[1]{ & #1}
+
+\newcommand{\affiliation}[2]{\textsc{#1} & #2}
+
+\begin{ctabular}{Yp{4.235in}}
+  \heading{education}
+  \degree{2017}%
+    {Ph. D. in Physics}%
+    {University of Arizona}%
+    {https://github.com/adarshp/dissertation}%
+    {Hidden Higgses and Dark Matter at Current and Future
+    Colliders}\\\addlinespace \degree{2011}%
+    {B. A. in Physics}%
+    {Reed College}%
+    {https://adarsh.netlify.com/reedthesis.pdf}%
+    {Contribution of the neutral pion Regge trajectory to the exclusive central
+    production of $\eta$(548) mesons in high energy proton/proton collisions}\\&\\
+    \heading{Professional Appointments}
+    \appointment{2017 - present}%
+    {Postdoctoral Research Associate}%
+    {School of Information}%
+    {University of Arizona}\\&\\
+  \heading{Publications}
+  \publication{2017}{A Razor Search for Bino Dark Matter at 100 TeV}%
+      {\me{} and S. Su}%
+      {(in preparation)}\\\addlinespace
+  \publication{}{Exotic Higgs Decays at 14 and 100 TeV}%
+      {F. Kling, H. Li, \me{}, H. Song, and S. Su}%
+      {(in preparation)}\\\addlinespace
+  \publication{2015}{Light Charged Higgs Bosons to AW/HW via Top Decay}%
+      {F. Kling, \me{}, and S. Su}%
+      {\href{http://link.springer.com/article/10.1007\%2FJHEP11\%282015\%29051}{Journal
+        of High Energy Physics, \textbf{11} (2015) 051}}\\&\\
+  \heading{Honors and Awards}
+  \entry{2016,17}{Dept. of Physics Publications/Presentations Award}\\
+  \entry{2014,17}{Outstanding Graduate Student Colloquium Presentation}\\
+  \entry{2016}{Galileo Circle Scholarship}\\
+  \entry{2015}{Graduate and Professional Student Council Travel Award}\\
+  \entry{}{Professor C. Y. Fan `FanFare' Travel Award}\\
+  \entry{}{Graduate College Fellowship in Physics}\\
+  \entry{2014-16}{APS 4CS Student Travel Grant}\\&\\
+  \heading{Grants}
+  \grant{2018-20}%
+  {Co-Investigator}%
+  {AutoMATES: Automated Model Assembly from Text, Equations, and Software}
+  {Defense Advanced Research Projects Agency}%
+  {\$967,678}\\&\\
+  \heading{Talks}
   \talk{2018}{Causal Analysis Graphs from Text}%
              {DARPA World Modelers PI Meeting}
              {Arlington, VA}\\\addlinespace
@@ -241,90 +258,77 @@ Tucson AZ 85719 &
              {Orem, UT}\\\addlinespace
   \talk{}{Light Charged Higgs Bosons to AW/HW via Top Decay}%
   {23$^{\text{rd}}$ International Conference on Supersymmetry and Unification of Fundamental Interactions}
-  {Lake Tahoe, CA}
-\end{ctabular}
-
-\newcommand{\research}[1]{ & #1 }
-
-\newcommand{\project}[1]{\medskip\textit{#1}\medskip}
-\customsection{Research Experience}
-\begin{ctabular}{R{0.5in}p{4.235in}}
-  \textit{2017–} & \textsf{\textbf{Postdoctoral Researcher}}, \textsf{ University of Arizona}\\
-  \research{
-    \project{Big Mechanism}\\
-&    As part of DARPA's Big Mechanism program, I am currently developing and
-    implementing algorithms to infer the structure of chemical reaction pathways
-    within cells, using data automatically extracted from biomedical research
-    papers. \\
-&    \project{World Modelers}\\
-&    For DARPA's World Modelers program, I am designing algorithms to
-    assemble and parameterize quantitative models of food security from machine
-    reading of texts such as agency reports and news articles.
-} \\\addlinespace
-  \textit{2016-17} & \textsf{\textbf{Research Assistant}}, \textsf{ University of Arizona}\\
-&    During the course of my doctoral research, I developed three analyses aimed at discovering or constraining new physics models in high-energy particle collision experiments.\\
-&\project{Exotic Higgs Decays at 14 and 100 TeV}\\
-&    This analysis aims to determine the prospects of exotic Higgs decay modes at a 100 TeV collider for all physically viable Two-Higgs Doublet Models, using boosted decision tree classifiers and physics-motivated input features.\\
-&    \project{A Razor Search for Bino Dark Matter at 100 TeV}\\
-&    I designed an analysis to examined the prospects of finding bino-like dark matter resulting from the decay of pair-produced higgsinos at a 100 TeV collider, using razor variables and boosted decision trees.\\
-&    \project{Light Charged Higgs Bosons to AW/HW via Top Decay}\\
-&    This analysis is designed to find a charged Higgs produced via the decay of a top quark at the 14 TeV \textsc{lhc}, in the context of a Type-II Two Higgs Doublet Model, using a unique kinematical angle to discriminate between signal and background events.\\
- \end{ctabular}
-
-\newcommand{\teaching}[1]{
-  & #1\\
-}
-\customsection{Teaching Experience}
-\begin{ctabular}{R{0.5in}p{4.235in}}
+  {Lake Tahoe, CA}\\&\\
+    \heading{Research Experience}
+    \textit{2017 - present} & \textsf{\textbf{Postdoctoral Researcher}},
+    \textsf{University of Arizona}\\
+    \research{
+      \project{Big Mechanism}\\
+  &    As part of DARPA's Big Mechanism program, I am currently developing and
+      implementing algorithms to infer the structure of chemical reaction pathways
+      within cells, using data automatically extracted from biomedical research
+      papers. \\
+  &    \project{World Modelers}\\
+  &    For DARPA's World Modelers program, I am designing algorithms to
+      assemble and parameterize quantitative models of food security from machine
+      reading of texts such as agency reports and news articles.
+  } \\\addlinespace
+    \textit{2016-17} & \textsf{\textbf{Research Assistant}}, \textsf{ University of Arizona}\\
+  &    During the course of my doctoral research, I developed three analyses
+  aimed at discovering or constraining new physics models in high-energy
+  particle collision experiments.\\
+  &\project{Exotic Higgs Decays at 14 and 100 TeV}\\
+  &    This analysis aims to determine the prospects of exotic Higgs decay modes
+  at a 100 TeV collider for all physically viable Two-Higgs Doublet Models,
+  using boosted decision tree classifiers and physics-motivated input
+  features.\\
+  &    \project{A Razor Search for Bino Dark Matter at 100 TeV}\\
+  &    I designed an analysis to examined the prospects of finding bino-like
+  dark matter resulting from the decay of pair-produced higgsinos at a 100 TeV
+  collider, using razor variables and boosted decision trees.\\
+  &    \project{Light Charged Higgs Bosons to AW/HW via Top Decay}\\
+  &    This analysis is designed to find a charged Higgs produced via the decay
+  of a top quark at the 14 TeV \textsc{lhc}, in the context of a Type-II Two
+  Higgs Doublet Model, using a unique kinematical angle to discriminate between
+  signal and background events.\\&\\
+  \heading{Teaching Experience}
   \textit{2011-17} & \textsf{\textbf{Teaching Assistant}}, \textsf{ University of Arizona}\\
   \teaching{Introduction to Scientific Computing (Spring 2017)}
   \teaching{Advanced Lab, (Fall 2013-Fall 2016).}
   \teaching{Introductory Physics for non-majors - Lecturer (Fall 2012).}
   \teaching{Introductory Electricity and Magnetism (2011-12).}
-  \teaching{Introductory Physics for non-majors - Lab (Summer 2012 \& Summer 2014).}
- \end{ctabular}
-
-\customsection{Service}
-\newcommand{\service}[2]{\emph{#1} & #2}
-\begin{ctabular}{R{0.5in}p{4.235in}}
-\service{2015}{GPSC Travel Grant Judge }\\
-\service{2012-13}{Member of Physics Grad Council}\\
-\service{}{Member of the Associated Graduate Council for the College of Science}\\
-\service{}{Organized the weekly departmental graduate student seminar series}\\
-\service{}{Arizona Assurance Mentor}
+  \teaching{Introductory Physics for non-majors - Lab (Summer 2012 \& Summer
+  2014).}\\&\\
+  \heading{Service}
+  \entry{2015}{GPSC Travel Grant Judge }\\
+  \entry{2012-13}{Member of Physics Grad Council}\\
+  \entry{}{Member of the Associated Graduate Council for the College of Science}\\
+  \entry{}{Organized the weekly departmental graduate student seminar series}\\
+  \entry{}{Arizona Assurance Mentor}\\&\\
+  \heading{Skills}
+  \skill{Data analysis with \textsc{c++} and \textsc{python}.}\\
+  \skill{Software version control with \textsc{git} and \href{http://www.github.com/adarshp}{Github}}\\
+  \skill{Website design with \textsc{html} and \textsc{css}, static site generation.}\\
+  \skill{Writing and typesetting scientific manuscripts with \LaTeX}\\
+  \skill{Languages: English (native), Hindi, Malayalam}\\&\\
+  \heading{Professional Affiliations}
+  \affiliation{}{American Physical Society}
 \end{ctabular}
 
-\customsection{Skills}
-\newcommand{\skill}[1]{ & #1}
-\begin{ctabular}{R{0.5in}p{4.235in}}
-\skill{Data analysis with \textsc{c++} and \textsc{python}.}\\
-  \skill{Software version control with \textsc{git} and
-  \href{http://www.github.com/adarshp}{Github}}\\
-\skill{Website design with \textsc{html} and \textsc{css}, static site generation.}\\
-\skill{Writing and typesetting scientific manuscripts with \LaTeX}\\
-\skill{Languages: English (native), Hindi, Malayalam}
-\end{ctabular}
-
-\customsection{Professional Affiliations}
-\newcommand{\affiliation}[2]{\textsc{#1} & #2}
-\begin{ctabular}{R{0.5in}p{4.235in}}
-\affiliation{}{American Physical Society}
-\end{ctabular}
-
-\customsection{References}
-\begin{ctabular}{R{0.5in}p{4.235in}}
-& Kobus Barnard\\
-& Professor, Department of Computer Science\\
-& University of Arizona\\
-& \texttt{\href{mailto:kobus@cs.arizona.edu}{kobus@cs.arizona.edu}}\\\addlinespace
-& Clayton Morrison\\
-& Associate Professor, School of Information\\
-& University of Arizona\\
-& \texttt{\href{mailto:claytonm@email.arizona.edu}{claytonm@email.arizona.edu}}\\\addlinespace
-& Shufang Su\\
-& Professor, Department of Physics\\
-& University of Arizona\\
-& \texttt{\href{mailto:shufang@physics.arizona.edu}{shufang@physics.arizona.edu}}\\
-\end{ctabular}
+%\customsection{References}
+%\begin{ctabular}{Yp{4.235in}}
+%& Kobus Barnard\\
+%& Professor, Department of Computer Science\\
+%& University of Arizona\\
+%& \texttt{\href{mailto:kobus@cs.arizona.edu}{kobus@cs.arizona.edu}}\\\addlinespace
+%& Clayton Morrison\\
+%& Associate Professor, School of Information\\
+%& University of Arizona\\
+%& \texttt{\href{mailto:claytonm@email.arizona.edu}{claytonm@email.arizona.edu}}\\\addlinespace
+%& Shufang Su\\
+%& Professor, Department of Physics\\
+%& University of Arizona\\
+%& \texttt{\href{mailto:shufang@physics.arizona.edu}{shufang@physics.arizona.edu}}\\
+%\end{ctabular}
 
 \end{document}
